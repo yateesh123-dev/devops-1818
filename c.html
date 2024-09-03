@@ -12,3 +12,49 @@ https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
    16  systemctl start jenkins
    17  systemctl status jenkins
    ###########################################################
+Install redhat
+yum install httpd -y
+    2  rpmquerey httpd
+    3  rpmquery httpd
+    4  cd /var/www/html/
+    5  echo "This is my web server running in Aws cloud " > index.html
+    6  ll
+    7  cat index.html
+    8  cd
+    9  systemctl start httpd
+   10  systemctl status httpd
+   11  systemctl enable httpd
+   12  curl http://localhost
+   13  ip a s
+   14  curl http://172.31.0.139
+   15  yum install vsftdp -y
+   16  yum install vsftpd -y
+   17  yum install cifs-utils -y
+   18  yum install nfs-utils -y
+   19  yum install tree -y
+   20  cd /tmp/
+   21  touch sanjaya.txt{1..100}
+   22  ll
+   23  cd
+   #######################################################
+   Volume steps
+    44  clear
+   45  lsblk -fs
+   46  lsblk
+   47  mkfs
+   48  mkfs.ext4 /dev/xvdb
+   49  blkid
+   50  mkdir data
+   51  mkdir daty
+   52  mount /dev/xvdb daty
+   53  df -h
+   54  cd data
+   55  cd ..
+   56  cd daty
+   57  touch train.txt{1..100}
+   58  ll
+   59  cd
+   60  yum install vim -y
+   61  vim /etc/fstab
+   62  mount -a
+   63  df -h
