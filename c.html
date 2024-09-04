@@ -2,8 +2,8 @@ For install jenkins
 dnf install java-17-amazon-corretto -y
     9  java - version
    10  java -version
-   11  wget -O /etc/yum.repos.d/jenkins.repo
-https://pkg.jenkins.io/redhat-stable/jenkins.repo
+   11  wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
    12  yum repolist all
    13  rpm --import
 https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
@@ -13,8 +13,8 @@ https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
    17  systemctl status jenkins
    ###########################################################
 Install redhat
+yum update -y
 yum install httpd -y
-    2  rpmquerey httpd
     3  rpmquery httpd
     4  cd /var/www/html/
     5  echo "This is my web server running in Aws cloud " > index.html
@@ -27,7 +27,6 @@ yum install httpd -y
    12  curl http://localhost
    13  ip a s
    14  curl http://172.31.0.139
-   15  yum install vsftdp -y
    16  yum install vsftpd -y
    17  yum install cifs-utils -y
    18  yum install nfs-utils -y
@@ -37,7 +36,7 @@ yum install httpd -y
    22  ll
    23  cd
    #######################################################
-   Volume steps
+   adding of disk using volumes in redhat
     44  clear
    45  lsblk -fs
    46  lsblk
