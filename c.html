@@ -13,7 +13,9 @@ https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
    17  systemctl status jenkins
    ###########################################################
 tomacat installation
-cd /opt
+ yum install java
+    9  java --version
+   10  cd /opt
    11  wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.93/bin/apache-tomcat-9.0.93.tar.gz
    12  ls
    13  tar -xvzf apache-tomcat-9.0.93.tar.gz
