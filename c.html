@@ -38,6 +38,13 @@ tomacat installation
    30  cd conf/
    31  ls
    32  vim tomcat-users.xml
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-status"/>
+<user username="admin" password="admin" roles="manager-gui,manager-script,manager-jmax,manager-status"/>
+<user username="deployer" password="deployer" roles="manager-script"/>                                                               
+<user username="tomcat" password="s3cret" roles="manager-gui"/>
    33  cd ..
    34  cd bin/
    35  ./shutdown.sh
@@ -47,6 +54,8 @@ tomacat installation
    39  ls -a
    40  cd tomcat
    41  cd bin
+
+
 ####################################################################
 Install redhat
 yum update -y
