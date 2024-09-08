@@ -104,6 +104,9 @@ yum install httpd -y
    61  vim /etc/fstab
    62  mount -a
    63  df -h
+    root space increase
+     growpart /dev/xvda 1
+    xfs_growfs -d /dev/xvda1
 #########################################
    in vpc-private connection 
     1.vim "keypair.name"
@@ -114,3 +117,26 @@ yum install httpd -y
     2.add the keys
     3.create the file and to move the file
     4. scp a.txt root@ipadress:/tmp
+    ########################################################
+    s3 bucket
+    um update all
+      sudo yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel
+      git clone
+https://github.com/s3fs-fuse/s3fs-fuse.git
+      cd s3fs-fuse
+      ./autogen.sh
+      ./configure --prefix=/usr --with-openssl
+      make
+      sudo make install
+     which s3fs
+     touch /etc/passwd-s3fs
+     vim /etc/passwd-s3fs
+     sudo chmod 640 /etc/passwd-s3fs
+     mkdir /mys3bucket
+     s3fs notbest -o use_cache=/tmp -o allow_other -o uid=1001 -o mp_umask=002 -o multireq_max=5 /mys3bucket
+     which s3fs
+     /usr/local/bin/s3fs
+     df -Th
+     cd /mys3bucket
+     echo "this is a test file to check s3fs" >> test.txt
+     ls
