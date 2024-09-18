@@ -140,3 +140,70 @@ https://github.com/s3fs-fuse/s3fs-fuse.git
      cd /mys3bucket
      echo "this is a test file to check s3fs" >> test.txt
      ls
+    #########################################################
+    docker container
+    1.rpmquery docker
+2.yum update -y
+3.sudo yum install -y yum-utils
+4.sudo yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+5.sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+6.sudo systemctl start docker
+7.systemctl enable docker 
+8.docker images
+9.docker run -it --name my-container -p 8080:80 ubuntu:latest /bin/bash
+(add port 8080 to security group )
+10.apt update -y
+11.apt install apache2 -y
+12. cd /var/www/html
+13.echo "...." >index.html
+14.service apache start
+ctrl+p ctrl+q to quit from container.
+15.docker ps -a
+16.curl http://ip address
+ 
+optional to delete container:-
+17.docker kill my-container
+ 
+ 
+-------------------when you want if any pbms occur,if container deleted but still want to access data then make a container with a volume-------------------
+1.docker volume create my-vol
+2.docker volume ls
+3.cd /var/lib/docker/volumes/
+4.ll
+5.cd /my-vol/
+6.ll
+7.docker run -it --name data-app -p 2222:80 -v my-vol:/var/www/html ubuntu:latest /bin/bash
+8.apt update -y
+9.apt install apache2 
+10.cd /var/www/html
+11.echo "...." >index.html
+12.service apache2 start (ctrl+p ctrl+q)
+13.cd /var/lib/docker/volumes
+14.ll
+15.cd /my-vol/data-vol
+16.ll
+17.docker kill data-app
+18.cd /var/lib/docker/volumes/my-vol/_data/
+ 
+ 
+--------------------------nginx ------------------------------
+1.docker pull nginx
+2.docker run -it --name nginx-server -p 9090:80 nginx:latest /bin/bash
+3.apt update -y
+4.cd /usr/share/nginx/html
+5.echo "..." >index.html
+6.service nginx start
+-copy public ip address of instance:9090
+ 
+---To create image from nginx server-------
+1.docker commit nginx-server
+2.docker images -a
+3.docker tag (ImageId of none) img-name
+4.docker commit name-of-container img-name
+5.docker ps
+ 
+-------From created image creating container-------
+1.docker run -it --name container-name -p 7080:80 nginx-img:latest /bin/bash
+2.ls
+3.cd /usr/share/nginx/html
+4. ls (check index.html of nginx-img is visible or not)
